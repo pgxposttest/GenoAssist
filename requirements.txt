@@ -16,3 +16,4 @@ langchain-community
 langchain-openai
 pydantic==1.*
 dataframe-image
+pymupdf

@@ -14,7 +14,12 @@ tabulate
 docx2txt
 langchain-community
 langchain-openai
-pydantic==1.*
+langchain-core>=0.3.59,<1.0.0
+langchain-community>=0.0.30  # Or whichever version matches your usage
+langchain-openai>=0.1.8
+langchain-huggingface==0.2.0
+pydantic>=2.7.0
+pydantic-settings>=2.7.0
 dataframe-image
 pymupdf
 matplotlib

@@ -113,7 +113,7 @@ def retrieval_qa_chain(llm, prompt, db):
         llm=llm,
         chain_type="stuff",
         retriever=db.as_retriever(search_kwargs={"k": 7}),
-        return_source_documents=True,
+        return_source_documents=False,
         chain_type_kwargs={
             "verbose": False,
             "prompt": prompt,
@@ -288,7 +288,7 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
-    print(ai_res["result"])
+    # print(ai_res["result"])
 
     for word in message.content.split():
         word = word.translate(str.maketrans("", "", string.punctuation)).lower()

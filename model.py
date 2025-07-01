@@ -20,6 +20,7 @@ import dataframe_image as dfi
 import suggestive_search  
 import asyncio
 import matplotlib.pyplot as plt
+import os
 
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
@@ -61,8 +62,6 @@ Then use the following format and break up each section into bullet points:
 
 5. **App & Follow-Up**  
    - Say these exact words every time: “If you would like, I can show you how to use the NalaGenetics app to access your test report. You can share your report with other healthcare providers.”
-
-
 
 ------
 <ctx>

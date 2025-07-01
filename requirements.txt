@@ -17,3 +17,5 @@ langchain-openai
 pydantic==1.*
 dataframe-image
 pymupdf
+matplotlib
+python-docx

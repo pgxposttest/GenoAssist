@@ -17,6 +17,7 @@ from langchain.prompts import PromptTemplate
 from langchain.schema.callbacks.manager import CallbackManager
 from langchain.schema.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from tabulate import tabulate
+from openai import OpenAI
 
 import fitz
 import chainlit as cl
@@ -84,7 +85,8 @@ Question: {question}
 Only return the helpful answer below and explain.
 """
 
-os.environ["OPENAI_API_KEY"] = "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"
+api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
 GENE_DATAFRAME = suggestive_search.load_database()
 CPIC_DATAFRAME = suggestive_search.load_cpic()
 

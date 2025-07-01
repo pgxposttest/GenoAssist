@@ -1,30 +1,29 @@
-# Use an appropriate base image, e.g., python:3.10-slim
-FROM python:3
+# Use an appropriate base image
+FROM python:3.10-slim
 
-# Set environment variables (e.g., set Python to run in unbuffered mode)
+# Run Python unbuffered for clean logs
 ENV PYTHONUNBUFFERED 1
 
+# Install system build dependencies
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install g++ -y
+    apt-get install -y build-essential gcc g++ python3-dev
 
-# 👇 STYLE YOUR DOCKERFILE LIKE A PRO
-RUN pip install -U \
-    pip \
-    setuptools \
-    wheel
+# Upgrade pip & setuptools
+RUN pip install -U pip setuptools wheel
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy your application's requirements and install them
+# Copy requirements & install
 COPY requirements.txt /app/
 
 RUN pip install -r /app/requirements.txt
 
-# Copy your application code into the container
+# Copy app code
 COPY . /app/
 
 EXPOSE 8080
 
+# Start the Chainlit app
 CMD ["python", "-m", "chainlit", "run", "model.py", "-h", "--port", "8080"]

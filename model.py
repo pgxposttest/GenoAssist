@@ -1,5 +1,12 @@
 # To start chatbot, run: chainlit run model.py -w
 
+# Git Sync:
+# git init
+# git add .
+# git commit -m "Initial commit"
+# git branch -M main
+# git push -u origin main
+
 from langchain.chains import RetrievalQA
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.vectorstores import FAISS

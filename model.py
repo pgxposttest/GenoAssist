@@ -84,7 +84,7 @@ Question: {question}
 Only return the helpful answer below and explain.
 """
 
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = "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"
 GENE_DATAFRAME = suggestive_search.load_database()
 CPIC_DATAFRAME = suggestive_search.load_cpic()
 

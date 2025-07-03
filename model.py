@@ -289,6 +289,10 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
+    result = ai_res["result"]
+    if isinstance(result, str) and result.strip().startswith("Used RetrievalQA"):
+        result = result.replace("Used RetrievalQA", "").strip()
+
     print(ai_res["result"])
 
     for word in message.content.split():

@@ -113,7 +113,7 @@ def retrieval_qa_chain(llm, prompt, db):
         llm=llm,
         chain_type="stuff",
         retriever=db.as_retriever(search_kwargs={"k": 7}),
-        return_source_documents=False,
+        return_source_documents=True,
         chain_type_kwargs={
             "verbose": False,
             "prompt": prompt,
@@ -141,6 +141,7 @@ def final_result(query):
     qa_result = qa_bot()
     response = qa_result({"query": query})
     return response
+
 
 def extract_summary_table_from_pdf(filepath):
     doc = fitz.open(filepath)
@@ -180,6 +181,14 @@ def extract_summary_table_from_pdf(filepath):
         return df
     else:
         return None
+
+class SilentHandler(cl.AsyncLangchainCallbackHandler):
+    async def on_chain_start(self, run, *args, **kwargs):
+        pass  # Silence chain start (no "Used RetrievalQA")
+    async def on_chain_end(self, run, *args, **kwargs):
+        pass  # Silence chain end
+    async def on_chain_error(self, run, error, *args, **kwargs):
+        pass  # Silence chain errors (optional)
 
 @cl.on_chat_start
 async def start():
@@ -288,7 +297,7 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
-    # print(ai_res["result"])
+    print(ai_res["result"])
 
     for word in message.content.split():
         word = word.translate(str.maketrans("", "", string.punctuation)).lower()

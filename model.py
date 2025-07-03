@@ -33,7 +33,7 @@ import os
 DB_FAISS_PATH = "vectorstore/db_faiss"
 
 template = """ Use the following context (delimited by <ctx></ctx>) and the chat history (delimited by <hs></hs>) to answer the question.
-Do not mention that you derived your answer from the given context.
+Do not mention that you derived your answer from the given context. 
 Your answer must be no more than 150 words. If there are no relevant documents on a specific topic, simply state "Sorry, I don’t have the relevant information on that topic."
 If you don't know the answer, please just say that you do not know the answer, don't try to make up an answer. Allow translations into Chinese, Malay and Tamil if requested by the user. Allow tables to be generated if requested by the user.
 ------
@@ -115,7 +115,7 @@ def retrieval_qa_chain(llm, prompt, db):
         retriever=db.as_retriever(search_kwargs={"k": 7}),
         return_source_documents=True,
         chain_type_kwargs={
-            "verbose": False,
+            "verbose": True,
             "prompt": prompt,
             "memory": ConversationBufferMemory(
                 memory_key="history",
@@ -253,7 +253,7 @@ async def start():
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()
 
     else:
-        await cl.Message(content="Session timeout, you can still chat with me or refresh the webpage to upload a patient’s PGx test report.").send()
+        await cl.Message(content="You can chat with me or refresh the webpage to upload a patient’s PGx test report.").send()
 
     cl.user_session.set("chain", chain)
     cl.user_session.set("reference_text", extracted_text)
@@ -289,10 +289,6 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
-    result = ai_res["result"]
-    if isinstance(result, str) and result.strip().startswith("Used RetrievalQA"):
-        result = result.replace("Used RetrievalQA", "").strip()
-
     print(ai_res["result"])
 
     for word in message.content.split():

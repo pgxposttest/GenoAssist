@@ -34,7 +34,7 @@ DB_FAISS_PATH = "vectorstore/db_faiss"
 
 template = """ Use the following context (delimited by <ctx></ctx>) and the chat history (delimited by <hs></hs>) to answer the question.
 Do not mention that you derived your answer from the given context.
-Your answer must be no more than 150 words. If there are no relevant documents on a specific topic, simply state "I don't have the relevant information on that topic."
+Your answer must be no more than 150 words. If there are no relevant documents on a specific topic, simply state "Sorry, I don’t have the relevant information on that topic."
 If you don't know the answer, please just say that you do not know the answer, don't try to make up an answer. Allow translations into Chinese, Malay and Tamil if requested by the user. Allow tables to be generated if requested by the user.
 ------
 
@@ -122,7 +122,6 @@ def retrieval_qa_chain(llm, prompt, db):
                 input_key="question"),
         }
     )
-
     return qa_chain
 
 
@@ -184,31 +183,19 @@ def extract_summary_table_from_pdf(filepath):
 
 
 @cl.on_chat_start
-async def start():
-    # Load README markdown file content
-    try:
-        with open("chainlit.md", "r", encoding="utf-8") as f:
-            readme_md = f.read()
-    except Exception as e:
-        readme_md = "⚠️ Could not load README file: " + str(e)
-
-    # Send the README content as a markdown message
-    await cl.Message(content=readme_md).send()
-
-    await asyncio.sleep(1)
-    
+async def start():    
     chain = qa_bot()
     msg = cl.Message(content="Starting the bot...")
     await msg.send()
 
     await asyncio.sleep(1)
-    msg.content = "Hi, welcome to GenoAssist! How can I help you? You can upload the patient's pharmacogenomics (PGx) test results or start chatting with me. I can help generate counselling points, answer questions about the PGx test results, medications, and more."
+    msg.content = "Hi, welcome to GenoAssist! How can I help you? Click on “Readme” (top right icon) to find out more about me!"
     await msg.update()
 
     action = await cl.AskActionMessage(
         content="Choose an option below:",
         actions=[
-            cl.Action(name="upload", value="upload", label="📎 Upload PGx Test Results", payload={}),
+            cl.Action(name="upload", value="upload", label="📎 Upload Patient's PGx Test Report", payload={}),
             cl.Action(name="chat", value="chat", label="💬 Start Chatting", payload={})
         ]
     ).send()
@@ -217,13 +204,13 @@ async def start():
 
     if action and action.get("name") == "upload":
         files = await cl.AskFileMessage(
-            content="Upload patient's PGx test results",
+            content="Upload patient's PGx test report",
             accept=[".pdf", ".docx", ".xlsx", ".csv"],
             max_size_mb=35
         ).send()
 
         if not files:
-            await cl.Message(content="No file was uploaded. You can still chat with the bot.").send()
+            await cl.Message(content="No file was uploaded. You can still chat with me.").send()
         else:
             file = files[0]
             file_path = file.path
@@ -266,7 +253,7 @@ async def start():
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()
 
     else:
-        await cl.Message(content="👍 Got it. You can start chatting now.").send()
+        await cl.Message(content="Session timeout, you can still chat with me or refresh the webpage to upload a patient’s PGx test report.").send()
 
     cl.user_session.set("chain", chain)
     cl.user_session.set("reference_text", extracted_text)

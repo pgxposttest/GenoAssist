@@ -182,16 +182,21 @@ def extract_summary_table_from_pdf(filepath):
     else:
         return None
 
-class SilentHandler(cl.AsyncLangchainCallbackHandler):
-    async def on_chain_start(self, run, *args, **kwargs):
-        pass  # Silence chain start (no "Used RetrievalQA")
-    async def on_chain_end(self, run, *args, **kwargs):
-        pass  # Silence chain end
-    async def on_chain_error(self, run, error, *args, **kwargs):
-        pass  # Silence chain errors (optional)
 
 @cl.on_chat_start
 async def start():
+    # Load README markdown file content
+    try:
+        with open("chainlit.md", "r", encoding="utf-8") as f:
+            readme_md = f.read()
+    except Exception as e:
+        readme_md = "⚠️ Could not load README file: " + str(e)
+
+    # Send the README content as a markdown message
+    await cl.Message(content=readme_md).send()
+
+    await asyncio.sleep(1)
+    
     chain = qa_bot()
     msg = cl.Message(content="Starting the bot...")
     await msg.send()

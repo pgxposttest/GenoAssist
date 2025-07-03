@@ -115,7 +115,7 @@ def retrieval_qa_chain(llm, prompt, db):
         retriever=db.as_retriever(search_kwargs={"k": 7}),
         return_source_documents=True,
         chain_type_kwargs={
-            "verbose": True,
+            "verbose": False,
             "prompt": prompt,
             "memory": ConversationBufferMemory(
                 memory_key="history",
@@ -127,12 +127,10 @@ def retrieval_qa_chain(llm, prompt, db):
 
 def qa_bot():
     embedding = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-small-en-v1.5")
-
     llm = load_llm()
     qa_prompt = set_custom_prompt()
     db = FAISS.load_local(DB_FAISS_PATH, embedding, allow_dangerous_deserialization=True)
     qa = retrieval_qa_chain(llm, qa_prompt, db)
-
     return qa
 
 
@@ -289,7 +287,10 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
-    print(ai_res["result"])
+    final_answer = ai_res["result"]
+
+    # Do NOT attach or forward ai_res["source_documents"] or other parts.
+    await cl.Message(content=final_answer).send()
 
     for word in message.content.split():
         word = word.translate(str.maketrans("", "", string.punctuation)).lower()
@@ -311,7 +312,6 @@ async def main(message: cl.Message):
                     headers="keys",
                     tablefmt="github")
             res += f"Here's a table with some information on **{word}**:\n\n{table_md}"
-
    
     # Append LLM result only if not already streamed by callback
     if not cb.answer_reached:

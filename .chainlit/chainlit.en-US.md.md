@@ -6,11 +6,11 @@ GenoAssist 2.0 is a chatbot developed by Chen Yixin and Shania Marani, year 4 Ph
 GenoAssist was originally developed by Ang Wei Jie and Song Meow Ying, former Pharmacy students at NUS, for their SCI-PhI research project on PGx pre-test counselling. GenoAssist was subsequently further developed and enhanced by Yixin and Shania to also support PGx post-test counselling, culminating in the current version – GenoAssist 2.0.
 
 **How to use GenoAssist 2.0**
-Upon opening the link to GenoAssist 2.0, please wait for the chatbot to start. It will generate a welcome message and provide 2 options for you: “Upload Patient’s PGx Test Report” and “Start Chatting”. 
+Upon opening the link to GenoAssist 2.0, please wait for the chatbot to start. It will generate a welcome message and provide 2 options for you: “Upload File” and “Start Chatting”. 
 
-After uploading the patient’s PGx test report, you can ask GenoAssist 2.0 how to counsel the patient. To upload more than 1 patient’s PGx test report, click on the top leftmost icon to start a new chat.
+You can upload a patient’s PGx test report and ask GenoAssist 2.0 how to counsel the patient. To upload a new file, click on the top leftmost icon to start a new chat.
 
-If an inactivity timeout occurs, start a new chat (top leftmost icon) to upload a patient’s PGx test report.
+If an inactivity timeout occurs, start a new chat (top leftmost icon) to upload a file.
 
 **Features**
 1. Interpret patients’ PGx test results, distil the information, and generate personalised counselling points in a structured and consistent manner

@@ -193,7 +193,7 @@ async def start():
     action = await cl.AskActionMessage(
         content="Choose an option below:",
         actions=[
-            cl.Action(name="upload", value="upload", label="📎 Upload Patient's PGx Test Report", payload={}),
+            cl.Action(name="upload", value="upload", label="📎 Upload File", payload={}),
             cl.Action(name="chat", value="chat", label="💬 Start Chatting", payload={})
         ]
     ).send()
@@ -251,7 +251,7 @@ async def start():
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()
 
     else:
-        await cl.Message(content="Please key in your query. Alternatively, click on the top leftmost icon to start a new chat if you want to upload a patient’s PGx test report.").send()
+        await cl.Message(content="Please key in your query. Alternatively, click on the top leftmost icon to start a new chat if you want to upload a file (e.g. patient’s PGx test report).").send()
 
     cl.user_session.set("chain", chain)
     cl.user_session.set("reference_text", extracted_text)

@@ -287,10 +287,7 @@ async def main(message: cl.Message):
         query = f"{user_lang_instruction}\n\n{query}"
     
     ai_res = await chain.acall({"query": query}, callbacks=[cb])
-    final_answer = ai_res["result"]
-
-    # Do NOT attach or forward ai_res["source_documents"] or other parts.
-    await cl.Message(content=final_answer).send()
+    print(ai_res["result"])
 
     for word in message.content.split():
         word = word.translate(str.maketrans("", "", string.punctuation)).lower()

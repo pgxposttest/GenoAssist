@@ -19,21 +19,15 @@ allow_origins = ["*"]
 # follow_symlink = false
 
 [features]
-# Show the prompt playground
-prompt_playground = true
-
-# Process and display HTML in messages. This can be a security risk (see https://stackoverflow.com/questions/19603097/why-is-it-dangerous-to-render-user-generated-html-or-javascript)
+edit_message = true
 unsafe_allow_html = false
-
-# Process and display mathematical expressions. This can clash with "$" characters in messages.
 latex = false
-
-# Authorize users to upload files with messages
-[features.multi_modal]
+[features.spontaneous_file_upload]
     enabled = false
     accept = ["*/*"]
     max_files = 20
     max_size_mb = 500
+auto_tag_thread = true
 
 # Allows user to use speech to text
 [features.speech_to_text]
@@ -58,7 +52,7 @@ default_collapse_content = false
 default_expand_messages = true
 
 # Hide the chain of thought details from the user in the UI.
-hide_cot = true
+cot = "hidden"
 
 # Link to your github repo. This will add a github button in the UI's header.
 # github = ""

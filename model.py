@@ -251,7 +251,7 @@ async def start():
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()
 
     else:
-        await cl.Message(content="Please key in your query. Alternatively, start a new chat or refresh the webpage if you want to upload a patient’s PGx test report.").send()
+        await cl.Message(content="Please key in your query. Alternatively, click on the top leftmost icon to start a new chat if you want to upload a patient’s PGx test report.").send()
 
     cl.user_session.set("chain", chain)
     cl.user_session.set("reference_text", extracted_text)

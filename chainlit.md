@@ -20,6 +20,7 @@ If an inactivity timeout occurs, start a new chat (top leftmost icon) to upload 
     + PGx testing
     + Gene-drug pairs: evidence, actionability, and testing recommendations
     + Adverse drug reactions associated with genetic polymorphisms
+    + Regulations on genetic testing
 
 If GenoAssist 2.0 does not have sufficient information to address your query, it will respond with: “Sorry, I don’t have the relevant information on that topic.”
 

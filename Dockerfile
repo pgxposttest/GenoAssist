@@ -15,6 +15,8 @@ RUN pip install -r requirements.txt
 
 COPY . /app/
 
+COPY vectorstore /app/vectorstore
+
 EXPOSE 8080
 
 CMD ["chainlit", "run", "model.py", "--host", "0.0.0.0", "--port", "8080"]

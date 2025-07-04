@@ -1,21 +1,35 @@
-# Welcome to GenoAssist
-## – your dedicated chatbot for Pharmacogenomics (PGx)!
+# Information on GenoAssist 2.0
 
-**GenoAssist is designed to provide factual answers to the following categories:**
-1. Basic concepts in genetics and PGx
-2. Fundamental understanding of PGx testing
-3. Gene-drug pairs: evidence, actionability, and testing recommendations
-4. Adverse drug reactions associated with genetic polymorphisms
-5. Regulatory considerations for PGx testing in Singapore 
+**Background**
+GenoAssist 2.0 is a chatbot developed by Chen Yixin and Shania Marani, year 4 Pharmacy students at National University of Singapore (NUS), for their SCI-PhI research project on leveraging generative artificial intelligence to support pharmacists in pharmacogenomics (PGx) post-test counselling.
 
-If I lack the necessary information to address your inquiry, I will inform you by stating, "I don't have the relevant information on that topic.”
+GenoAssist was originally developed by Ang Wei Jie and Song Meow Ying, former Pharmacy students at NUS, for their SCI-PhI research project on PGx pre-test counselling. GenoAssist was subsequently further developed and enhanced by Yixin and Shania to also support PGx post-test counselling, culminating in the current version – GenoAssist 2.0.
 
-If your query includes a drug name, do anticipate a comprehensive table with various drug-related information to follow. You may need to scroll to view the content on the right side of the table. Try typing “Warfarin” as a query to explore the details.
+**How to use GenoAssist 2.0**
+Upon opening the link to GenoAssist 2.0, please wait for the chatbot to start. It will generate a welcome message and provide 2 options for you: “Upload Patient’s PGx Test Report” and “Start Chatting”. 
 
-**Disclaimer:**
-1. Always exercise your clinical judgement when interpreting the provided answers.
-2. Please omit any patient identifiers in your inquiry.
+After uploading the patient’s PGx test report, you can ask GenoAssist 2.0 how to counsel the patient. To upload more than 1 patient’s PGx test report, click on the top leftmost icon to start a new chat.
 
-We value your input! Share your suggestions for improvement at http://tinyurl.com/genoassist
+If an inactivity timeout occurs, start a new chat (top leftmost icon) to upload a patient’s PGx test report.
 
-For assistance and support, please email us at angweijie1234@gmail.com (Wei Jie) or meowyingsong@gmail.com (Meow Ying).
+**Features**
+1. Interpret patients’ PGx test results, distil the information, and generate personalised counselling points in a structured and consistent manner
+2. Provide responses in the 4 official languages in Singapore: English, Mandarin, Malay, and Tamil
+3. Answer questions related to the following topics:
+    + Basic concepts in genetics and PGx
+    + PGx testing
+    + Gene-drug pairs: evidence, actionability, and testing recommendations
+    + Adverse drug reactions associated with genetic polymorphisms
+
+If GenoAssist 2.0 does not have sufficient information to address your query, it will respond with: “Sorry, I don’t have the relevant information on that topic.”
+
+If your question includes a drug name, GenoAssist 2.0 will generate a detailed table summarising key drug-related information. You may need to scroll horizontally to view the full table. Try typing “Warfarin” to explore this feature.
+
+**Disclaimers**
+1. Always apply your clinical judgement when interpreting GenoAssist 2.0’s responses.
+2. Please omit any patient identifiers in your queries to ensure patient confidentiality.
+
+**Contact us**
+If you have any questions or feedback, please email us at chen.yixin@u.nus.edu (Yixin) or e0969188@u.nus.edu (Shania). We value your input!
+
+Thank you for using GenoAssist 2.0!

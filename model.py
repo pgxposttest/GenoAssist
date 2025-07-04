@@ -187,7 +187,7 @@ async def start():
     await msg.send()
 
     await asyncio.sleep(1)
-    msg.content = "Hi, welcome to GenoAssist! How can I help you? Click on “Readme” (top right icon) to find out more about me!"
+    msg.content = "Hi, welcome to GenoAssist 2.0! How can I help you? Click on “Readme” (top right icon) to find out more about me!"
     await msg.update()
 
     action = await cl.AskActionMessage(
@@ -251,7 +251,7 @@ async def start():
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()
 
     else:
-        await cl.Message(content="You can chat with me or refresh the webpage to upload a patient’s PGx test report.").send()
+        await cl.Message(content="Please key in your query. Alternatively, start a new chat or refresh the webpage if you want to upload a patient’s PGx test report.").send()
 
     cl.user_session.set("chain", chain)
     cl.user_session.set("reference_text", extracted_text)

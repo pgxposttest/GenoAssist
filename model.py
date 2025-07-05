@@ -208,7 +208,7 @@ async def start():
         ).send()
 
         if not files:
-            await cl.Message(content="No file was uploaded. You can still chat with me.").send()
+            await cl.Message(content="No file was uploaded, please key in your query. Alternatively, click on the top leftmost icon to start a new chat if you want to upload a file (e.g. patient’s PGx test report).").send()
         else:
             file = files[0]
             file_path = file.path

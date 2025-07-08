@@ -202,7 +202,7 @@ async def start():
 
     if action and action.get("name") == "upload":
         files = await cl.AskFileMessage(
-            content="Upload patient's PGx test report",
+            content="Upload file (e.g. patient’s PGx test report)",
             accept=[".pdf", ".docx", ".xlsx", ".csv"],
             max_size_mb=35
         ).send()
@@ -245,7 +245,7 @@ async def start():
                         await cl.Message(content="⚠️ PGx summary table not found in this PDF.").send()
 
                 cl.user_session.set("reference_text", extracted_text)
-                await cl.Message(content="✅ File uploaded and stored for future questions.").send()
+                await cl.Message(content="✅ File uploaded. Please key in your query (e.g. “How do I counsel the patient?”).").send()
 
             except Exception as e:
                 await cl.Message(content=f"❌ Failed to process file: {e}").send()

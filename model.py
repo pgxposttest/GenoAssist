@@ -24,10 +24,8 @@ import chainlit as cl
 import os
 import string
 import pandas as pd
-import dataframe_image as dfi
 import suggestive_search  
 import asyncio
-import matplotlib.pyplot as plt
 import os
 
 DB_FAISS_PATH = "vectorstore/db_faiss"

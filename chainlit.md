@@ -3,7 +3,7 @@
 **Background**
 GenoAssist 2.0 is a chatbot developed by Chen Yixin and Shania Marani, year 4 Pharmacy students at National University of Singapore (NUS), for their SCI-PhI research project on leveraging generative artificial intelligence to support pharmacists in pharmacogenomics (PGx) post-test counselling.
 
-GenoAssist was originally developed by Ang Wei Jie and Song Meow Ying, former Pharmacy students at NUS, for their SCI-PhI research project on PGx pre-test counselling. GenoAssist was subsequently further developed and enhanced by Yixin and Shania to also support PGx post-test counselling, culminating in the current version – GenoAssist 2.0.
+GenoAssist was created by Ang Wei Jie and Song Meow Ying, former Pharmacy students at NUS, for their SCI-PhI research project on PGx pre-test counselling. GenoAssist was subsequently further developed and enhanced by Yixin and Shania to also support PGx post-test counselling, culminating in the current version – GenoAssist 2.0.
 
 **How to use GenoAssist 2.0**
 Upon opening the link to GenoAssist 2.0, please wait for the chatbot to start. It will generate a welcome message and provide 2 options for you: “Upload File” and “Start Chatting”. 

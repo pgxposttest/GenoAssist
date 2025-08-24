@@ -101,7 +101,7 @@ def set_custom_prompt():
 
 def load_llm():
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-    llm = ChatOpenAI(model_name='gpt-4.1-mini', streaming=True)
+    llm = ChatOpenAI(model_name='gpt-5-mini', streaming=True)
     return llm
 
 

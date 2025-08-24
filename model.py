@@ -101,7 +101,7 @@ def set_custom_prompt():
 
 def load_llm():
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-    llm = ChatOpenAI(model_name='gpt-5-mini', streaming=True)
+    llm = ChatOpenAI(model_name='gpt-4.1-mini', streaming=True)
     return llm
 
 
@@ -200,8 +200,10 @@ async def start():
     if action and action.get("name") == "upload":
         files = await cl.AskFileMessage(
             content="Upload file (e.g. patient’s PGx test report)",
-            accept=[".pdf", ".docx", ".xlsx", ".csv"],
-            max_size_mb=35
+            accept=["application/pdf"],
+            max_size_mb=35,
+            max_files=1,
+            timeout=300,
         ).send()
 
         if not files:

@@ -36,7 +36,7 @@ reaction_on_message_received = false
 
 # Authorize users to spontaneously upload files with messages
 [features.spontaneous_file_upload]
-    enabled = true
+    enabled = false
     # Define accepted file types using MIME types
     # Examples:
     # 1. For specific file types:
@@ -87,7 +87,7 @@ name = "GenoAssist"
 # description = ""
 
 # Chain of Thought (CoT) display mode. Can be "hidden", "tool_call" or "full".
-cot = "full"
+cot = "hidden"
 
 # Specify a CSS file that can be used to customize the user interface.
 # The CSS file can be served from the public directory or via an external link.

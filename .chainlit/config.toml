@@ -32,8 +32,8 @@ edit_message = true
 
 # Authorize users to spontaneously upload files with messages
 [features.spontaneous_file_upload]
-    enabled = false
-    accept = ["application/pdf", "application/docx", "application/xlsx", "application/csv""]
+    enabled = true
+    accept = ["application/pdf", "application/docx", "application/xlsx", "application/csv"]
     max_files = 20
     max_size_mb = 500
 

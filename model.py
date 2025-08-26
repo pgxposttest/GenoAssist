@@ -200,7 +200,11 @@ async def start():
     if action and action.get("name") == "upload":
         files = await cl.AskFileMessage(
             content="Upload file (e.g. patient’s PGx test report)",
-            accept=["application/pdf"],
+            accept=["application/pdf", 
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document", 
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",  
+                "text/csv",
+                "application/vnd.ms-excel"],
             max_size_mb=35,
             max_files=1,
             timeout=300,
